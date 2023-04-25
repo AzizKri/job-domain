@@ -1,11 +1,13 @@
 package Main;
 
 import Jobs.Degree;
+import Jobs.Job;
 
 public class Employer extends Person {
 
     private Degree reqDegree;
     private int reqExperience;
+    private Job joob;
 
     public Employer(String name, int age, char gender, Degree reqDegree, int ReqExperience) {
         super(name, age, gender);

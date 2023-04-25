@@ -72,7 +72,6 @@
               <Font name="Georgia" size="14" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Employer"/>
-            <Property name="actionCommand" type="java.lang.String" value="Employer"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b1ActionPerformed"/>

@@ -97,7 +97,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
         mainDesktop.removeAll();
-        Employer ap = new Employer();
+        EmployerGui ap = new EmployerGui();
         mainDesktop.add(ap).setVisible(true);
     }//GEN-LAST:event_b1ActionPerformed
 
