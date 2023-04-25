@@ -1,7 +1,6 @@
 package Jobs;
 
 public class Degree {
-
     private String degree;
     private String specilization;
 
