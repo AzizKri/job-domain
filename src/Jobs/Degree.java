@@ -27,7 +27,7 @@ public class Degree {
 
     @Override
     public String toString() {
-        return "Degree: " + degree + "\nSpecilization: " + specilization + "\n";
+        return "Required Degree: " + degree + "\nSpecilization: " + specilization;
     }
 
 }

@@ -71,7 +71,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
         });
         jPanel1.add(genderin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
-        fieldin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Specialization", "Engineering", "Data Science", "Cybersecurity", "Software Engineering", "Medicine", "Finance", "Law", "Biochemistry", "Information Technology", " " }));
+        fieldin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Specialization", "Engineering", "IT", "Medicine", "business", "Law" }));
         fieldin.setPreferredSize(new java.awt.Dimension(162, 30));
         fieldin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +80,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
         });
         jPanel1.add(fieldin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 150, -1));
 
-        expin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Years of experience", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25+" }));
+        expin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Years of experience", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25+" }));
         expin.setPreferredSize(new java.awt.Dimension(110, 30));
         expin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +121,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 70));
 
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 840, 450));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 840, 450));
 
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 860, 550));
@@ -153,8 +153,8 @@ public class EmployerGui extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "please enter all the information");
         }
         else{
-            String name = namein.getSelectedText();
-            int age = Integer.parseInt(salaryin.getSelectedText());
+            String name = namein.getText();
+            int age = Integer.parseInt(agein.getText());
             char gender = 'X';
             if (genderin.getSelectedItem() == "M") {
                     gender = 'M';
@@ -164,13 +164,14 @@ public class EmployerGui extends javax.swing.JInternalFrame {
             int exp = Integer.parseInt((String)expin.getSelectedItem());
             String degree = (String)degreein.getSelectedItem();
             String specilization = (String)fieldin.getSelectedItem();
-            Double salary = Double.valueOf(salaryin.getSelectedText());
-            String job = jobin.getSelectedText();
+            Double salary = Double.parseDouble(salaryin.getText());
+            String job = jobin.getText();
+            int degind = degreein.getSelectedIndex();
             
             Job j1 = new Job(job, salary);
             
             Degree d1 = new Degree(degree, specilization);
-            Employer e1 = new Employer(name, age, gender, d1, exp, j1);
+            Employer e1 = new Employer(name, age, gender, d1, exp, j1, degind);
             
             JOptionPane.showMessageDialog(rootPane, "Added");
             

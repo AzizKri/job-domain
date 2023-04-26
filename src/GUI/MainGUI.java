@@ -140,6 +140,7 @@ public class MainGUI extends javax.swing.JFrame {
             public void run() {
                 // Create the main GUI
                 MainGUI gui = new MainGUI();
+                gui.setVisible(true);
             }
         });
     }

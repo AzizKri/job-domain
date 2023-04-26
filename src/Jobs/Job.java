@@ -33,6 +33,6 @@ public class Job {
 
     @Override
     public String toString() {
-        return "Job title: " + title + "Salary: " + salary + "\n";
+        return "\nJob title: " + title + "\nSalary: " + salary ;
     }
 }
