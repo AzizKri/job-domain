@@ -9,10 +9,11 @@ public class Employer extends Person {
     private int reqExperience;
     private Job joob;
 
-    public Employer(String name, int age, char gender, Degree reqDegree, int ReqExperience) {
+    public Employer(String name, int age, char gender, Degree reqDegree, int ReqExperience, Job joob) {
         super(name, age, gender);
         this.reqDegree = reqDegree;
         this.reqExperience = (reqExperience >= 0)? reqExperience : 0;
+        this.joob = joob;
     }
 
     public Degree getReqDegree() {

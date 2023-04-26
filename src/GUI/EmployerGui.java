@@ -1,6 +1,7 @@
 package GUI;
 
 import Jobs.Degree;
+import Jobs.Job;
 import Main.Employer;
 import Main.Person;
 import javax.swing.JOptionPane;
@@ -23,13 +24,17 @@ public class EmployerGui extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        agein = new javax.swing.JTextField();
+        salaryin = new javax.swing.JTextField();
         namein = new javax.swing.JTextField();
         degreein = new javax.swing.JComboBox<>();
         genderin = new javax.swing.JComboBox<>();
         fieldin = new javax.swing.JComboBox<>();
         expin = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jobin = new javax.swing.JTextField();
+        agein = new javax.swing.JTextField();
+        agei2 = new javax.swing.JLabel();
+        agei1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         agei = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -40,8 +45,14 @@ public class EmployerGui extends javax.swing.JInternalFrame {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(880, 570));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(agein, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 220, 30));
-        jPanel1.add(namein, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 220, 30));
+        jPanel1.add(salaryin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 220, 30));
+
+        namein.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameinActionPerformed(evt);
+            }
+        });
+        jPanel1.add(namein, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 220, 30));
 
         degreein.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Degree", "Diploma", "Bachelor", "Masters", "Phd" }));
         degreein.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +60,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
                 degreeinActionPerformed(evt);
             }
         });
-        jPanel1.add(degreein, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 110, 30));
+        jPanel1.add(degreein, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 110, 30));
 
         genderin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gender", "M", "F" }));
         genderin.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -58,7 +69,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
                 genderinActionPerformed(evt);
             }
         });
-        jPanel1.add(genderin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        jPanel1.add(genderin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         fieldin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Specialization", "Engineering", "Data Science", "Cybersecurity", "Software Engineering", "Medicine", "Finance", "Law", "Biochemistry", "Information Technology", " " }));
         fieldin.setPreferredSize(new java.awt.Dimension(162, 30));
@@ -67,7 +78,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
                 fieldinActionPerformed(evt);
             }
         });
-        jPanel1.add(fieldin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 150, -1));
+        jPanel1.add(fieldin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 150, -1));
 
         expin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Years of experience", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25+" }));
         expin.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -76,7 +87,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
                 expinActionPerformed(evt);
             }
         });
-        jPanel1.add(expin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 150, -1));
+        jPanel1.add(expin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 150, -1));
 
         jButton1.setText("ADD JOB");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,13 +96,23 @@ public class EmployerGui extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 180, 30));
+        jPanel1.add(jobin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 220, 30));
+        jPanel1.add(agein, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 220, 30));
+
+        agei2.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
+        agei2.setText("Salary");
+        jPanel1.add(agei2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 120, 30));
+
+        agei1.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
+        agei1.setText("Age");
+        jPanel1.add(agei1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 30));
 
         jLabel4.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         jLabel4.setText(" Name");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 120, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 120, 30));
 
         agei.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
-        agei.setText("Age");
+        agei.setText("Job title");
         jPanel1.add(agei, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 120, 30));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
@@ -133,7 +154,7 @@ public class EmployerGui extends javax.swing.JInternalFrame {
         }
         else{
             String name = namein.getSelectedText();
-            int age = Integer.parseInt(agein.getSelectedText());
+            int age = Integer.parseInt(salaryin.getSelectedText());
             char gender = 'X';
             if (genderin.getSelectedItem() == "M") {
                     gender = 'M';
@@ -143,17 +164,36 @@ public class EmployerGui extends javax.swing.JInternalFrame {
             int exp = Integer.parseInt((String)expin.getSelectedItem());
             String degree = (String)degreein.getSelectedItem();
             String specilization = (String)fieldin.getSelectedItem();
+            Double salary = Double.valueOf(salaryin.getSelectedText());
+            String job = jobin.getSelectedText();
+            
+            Job j1 = new Job(job, salary);
             
             Degree d1 = new Degree(degree, specilization);
-            Employer e1 = new Employer(name, age, gender, d1, exp);
+            Employer e1 = new Employer(name, age, gender, d1, exp, j1);
             
+            JOptionPane.showMessageDialog(rootPane, "Added");
             
+            salaryin.setText("");
+            jobin.setText("");
+            namein.setText("");
+            agein.setText("");
+            genderin.setSelectedIndex(0);
+            expin.setSelectedIndex(0);
+            fieldin.setSelectedIndex(0);
+            degreein.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nameinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameinActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel agei;
+    private javax.swing.JLabel agei1;
+    private javax.swing.JLabel agei2;
     private javax.swing.JTextField agein;
     private javax.swing.JComboBox<String> degreein;
     private javax.swing.JComboBox<String> expin;
@@ -165,6 +205,8 @@ public class EmployerGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jobin;
     private javax.swing.JTextField namein;
+    private javax.swing.JTextField salaryin;
     // End of variables declaration//GEN-END:variables
 }
