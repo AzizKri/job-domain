@@ -1,8 +1,12 @@
 package GUI;
 
 import Jobs.Degree;
+import Jobs.Job;
 import Main.Applicant;
+import Main.Employer;
 import static Main.Employer.getEmployers;
+import java.io.File;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 
@@ -180,6 +184,7 @@ public class User extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_expinActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        display.setText("");
         if(genderin.getSelectedIndex() == 0 || specin.getSelectedIndex() == 0 || expin.getSelectedIndex() == 0 
                 || degreein.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(rootPane, "please enter all the information");
@@ -198,6 +203,20 @@ public class User extends javax.swing.JInternalFrame {
         int experience = Integer.parseInt((String)expin.getSelectedItem());
         Degree d1 = new Degree(degree, specialization);
         Applicant a1 = new Applicant(name, age, gender, d1, experience);
+        
+        Scanner EmployRead = null;
+        try{
+           EmployRead = new Scanner(new File("src/GUI/Jobs.txt"));
+           while(EmployRead.hasNextLine()){
+               String[] line = EmployRead.nextLine().split(",");
+               new Employer(line[0],Integer.parseInt( line[1]), line[2].charAt(0),
+                       new Degree(line[3], line[4]), Integer.parseInt(line[5]), new Job(line[6], Double.parseDouble(line[7])), Integer.parseInt(line[8]));
+
+           }
+        }
+        catch(Exception ex){
+            System.out.println("Error");
+        }
         
         for (int i = 0; i < getEmployers().size(); i++) {
             if(degreein.getSelectedIndex() >= getEmployers().get(i).getReqdegreeind()  && a1.getExperience() >= 

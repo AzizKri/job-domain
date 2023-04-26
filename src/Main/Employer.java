@@ -2,6 +2,7 @@ package Main;
 
 import Jobs.Degree;
 import Jobs.Job;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Employer extends Person {
@@ -19,6 +20,21 @@ public class Employer extends Person {
         this.joob = joob;
         this.reqdegreeind = ind;
         employers.add(this);
+        FileWriter jobWriter = null;
+        try {
+            jobWriter = new FileWriter("src/GUI/Jobs.txt");
+            jobWriter.append(this.toFile());
+            jobWriter.close();
+        } catch(Exception ex) {
+            System.out.println("Error");
+        }
+        finally{
+            try{
+                jobWriter.close();
+            }catch(Exception ex) {
+            System.out.println("Error");
+        }
+        }
     }
 
     public static ArrayList<Employer> getEmployers() {
@@ -58,6 +74,11 @@ public class Employer extends Person {
 
     public void setReqexperience(int reqExperience) {
         this.reqExperience = (reqExperience >= 0)? reqExperience : 0;
+    }
+    
+    public String toFile(){
+        return super.getName()+","+super.getAge()+","+super.getGender()+","+reqDegree.getDegree()+","
+                +reqDegree.getSpecilization()+","+reqExperience+","+joob.getTitle()+","+joob.getSalary()+","+this.reqdegreeind;
     }
 
     @Override
